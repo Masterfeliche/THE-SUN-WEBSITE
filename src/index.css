@@ -1,0 +1,14 @@
+/* src/index.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* small safety rule so nav text stays visible even if something else overwrote .text-white */
+.nav-link-override { color: #ffffff !important; }
+
+
+
+
+
+
+
