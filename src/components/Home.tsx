@@ -1,6 +1,64 @@
-// src/pages/Home.jsx
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState, useRef } from "react";
 import { Link } from "react-router-dom";
+
+// --- Type Definitions for our Data ---
+
+interface Program {
+  id: string;
+  title: string;
+  summary: string;
+  img: string;
+  tags: string[];
+}
+
+interface Post {
+  id: string;
+  title: string;
+  date: string;
+  excerpt: string;
+}
+
+interface Testimonial {
+  id: string;
+  name: string;
+  role: string;
+  quote: string;
+  avatar: string;
+}
+
+interface Event {
+  id: string;
+  title: string;
+  date: string;
+  venue: string;
+}
+
+interface Partner {
+  id: string;
+  name: string;
+  logo: string;
+}
+
+// --- Type Definitions for Component Props ---
+
+interface StatCardProps {
+  label: string;
+  value: string | number;
+  icon: string;
+}
+
+interface StatIconProps {
+  name: string;
+}
+
+interface ProgramCardProps {
+  p: Program;
+}
+
+interface TestimonialsCarouselProps {
+  items?: Testimonial[];
+}
+
 
 /**
  * Enhanced Homepage (React + Tailwind)
@@ -11,7 +69,7 @@ import { Link } from "react-router-dom";
 
 export default function Home() {
   // sample content (replace with real content or import JSON)
-  const programs = useMemo(
+  const programs: Program[] = useMemo(
     () => [
       {
         id: "p1",
@@ -49,7 +107,7 @@ export default function Home() {
     []
   );
 
-  const posts = useMemo(
+  const posts: Post[] = useMemo(
     () => [
       {
         id: "b1",
@@ -69,7 +127,7 @@ export default function Home() {
     []
   );
 
-  const gallery = useMemo(
+  const gallery: string[] = useMemo(
     () => [
       "/images/gallery-1.jpg",
       "/images/gallery-2.jpg",
@@ -81,7 +139,7 @@ export default function Home() {
     []
   );
 
-  const testimonials = useMemo(
+  const testimonials: Testimonial[] = useMemo(
     () => [
       {
         id: "t1",
@@ -111,7 +169,7 @@ export default function Home() {
     []
   );
 
-  const events = useMemo(
+  const events: Event[] = useMemo(
     () => [
       { id: "e1", title: "Fundraising Gala", date: "2025-11-05", venue: "City Hall" },
       { id: "e2", title: "Community Clean-Up", date: "2025-09-12", venue: "Village X" },
@@ -119,7 +177,7 @@ export default function Home() {
     []
   );
 
-  const partners = useMemo(
+  const partners: Partner[] = useMemo(
     () => [
       { id: "par1", name: "CleanAid", logo: "/images/partner-1.png" },
       { id: "par2", name: "SolarNow", logo: "/images/partner-2.png" },
@@ -130,14 +188,14 @@ export default function Home() {
 
   // Animated counters
   const [counts, setCounts] = useState({ people: 0, programs: 0, volunteers: 0, funds: 0 });
+  const rafId = useRef<number | null>(null);
+
   useEffect(() => {
-    // final values we want to show
     const target = { people: 12340, programs: 8, volunteers: 320, funds: 75000 };
     const duration = 1200;
     const start = performance.now();
-    let rafId;
 
-    const step = (now) => {
+    const step = (now: number) => {
       const t = Math.min(1, (now - start) / duration);
       const ease = t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t; // eased
       setCounts({
@@ -146,11 +204,18 @@ export default function Home() {
         volunteers: Math.floor(target.volunteers * ease),
         funds: Math.floor(target.funds * ease),
       });
-      if (t < 1) rafId = requestAnimationFrame(step);
+      if (t < 1) {
+        rafId.current = requestAnimationFrame(step);
+      }
     };
 
-    rafId = requestAnimationFrame(step);
-    return () => cancelAnimationFrame(rafId);
+    rafId.current = requestAnimationFrame(step);
+
+    return () => {
+      if (rafId.current) {
+        cancelAnimationFrame(rafId.current);
+      }
+    };
   }, []);
 
   return (
@@ -220,7 +285,7 @@ export default function Home() {
                   onError={(e) => (e.currentTarget.style.display = "none")}
                 />
                 <div className="mt-3 p-3 bg-white rounded-lg border flex items-center gap-3">
-                  <img src="/images/mini-avatar.jpg" alt="" className="w-10 h-10 rounded-full object-cover" onError={(e)=> (e.currentTarget.style.display='none')}/>
+                  <img src="/images/mini-avatar.jpg" alt="" className="w-10 h-10 rounded-full object-cover" onError={(e) => (e.currentTarget.style.display = 'none')} />
                   <div>
                     <div className="text-sm font-semibold">Latest Update</div>
                     <div className="text-xs text-slate-500">Community well opened in Region A — 500 beneficiaries</div>
@@ -328,7 +393,7 @@ export default function Home() {
             <div className="flex items-center gap-4 flex-wrap">
               {partners.map((par) => (
                 <div key={par.id} className="p-2">
-                  <img src={par.logo} alt={par.name} className="h-12 object-contain" onError={(e)=> (e.currentTarget.style.display='none')} />
+                  <img src={par.logo} alt={par.name} className="h-12 object-contain" onError={(e) => (e.currentTarget.style.display = 'none')} />
                 </div>
               ))}
             </div>
@@ -369,7 +434,7 @@ export default function Home() {
 
 /* -------------------- Helper components -------------------- */
 
-function StatCard({ label, value, icon }) {
+function StatCard({ label, value, icon }: StatCardProps) {
   return (
     <div className="bg-white rounded-lg p-4 shadow-sm flex items-center gap-3 border">
       <div className="flex-none w-12 h-12 rounded-lg bg-orange-50 flex items-center justify-center text-orange-600">
@@ -383,43 +448,43 @@ function StatCard({ label, value, icon }) {
   );
 }
 
-function StatIcon({ name }) {
+function StatIcon({ name }: StatIconProps) {
   // simple icons via SVG
   if (name === "people")
     return (
       <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" aria-hidden>
-        <path d="M16 11a4 4 0 10-8 0" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-        <path d="M2 21v-2a4 4 0 014-4h8a4 4 0 014 4v2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+        <path d="M16 11a4 4 0 10-8 0" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M2 21v-2a4 4 0 014-4h8a4 4 0 014 4v2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
       </svg>
     );
   if (name === "programs")
     return (
       <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" aria-hidden>
-        <path d="M3 7h18" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-        <path d="M5 11h14" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-        <path d="M7 15h10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+        <path d="M3 7h18" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+        <path d="M5 11h14" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+        <path d="M7 15h10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
       </svg>
     );
   if (name === "volunteer")
     return (
       <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" aria-hidden>
-        <path d="M12 12a5 5 0 100-10 5 5 0 000 10z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-        <path d="M4 22v-1a6 6 0 016-6h4a6 6 0 016 6v1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+        <path d="M12 12a5 5 0 100-10 5 5 0 000 10z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+        <path d="M4 22v-1a6 6 0 016-6h4a6 6 0 016 6v1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
       </svg>
     );
   return (
     <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" aria-hidden>
-      <path d="M12 3v12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-      <path d="M6 9h12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+      <path d="M12 3v12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+      <path d="M6 9h12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
     </svg>
   );
 }
 
-function ProgramCard({ p }) {
+function ProgramCard({ p }: ProgramCardProps) {
   return (
     <article className="bg-white rounded-lg overflow-hidden shadow-sm border">
       <div className="h-44 bg-slate-100 overflow-hidden">
-        <img src={p.img} alt={p.title} className="w-full h-full object-cover" onError={(e)=> (e.currentTarget.style.display='none')} />
+        <img src={p.img} alt={p.title} className="w-full h-full object-cover" onError={(e) => (e.currentTarget.style.display = 'none')} />
       </div>
       <div className="p-4">
         <div className="flex items-center justify-between">
@@ -429,7 +494,7 @@ function ProgramCard({ p }) {
         <p className="text-sm text-slate-600 mt-2 line-clamp-3">{p.summary}</p>
         <div className="mt-3 flex items-center justify-between">
           <Link to={`/programs/${p.id}`} className="text-orange-600 text-sm font-medium hover:underline">Learn more →</Link>
-          <div className="text-xs text-slate-400">{p.tags?.slice(0,2).join(" · ")}</div>
+          <div className="text-xs text-slate-400">{p.tags?.slice(0, 2).join(" · ")}</div>
         </div>
       </div>
     </article>
@@ -437,10 +502,11 @@ function ProgramCard({ p }) {
 }
 
 /* Simple testimonials carousel with auto-play */
-function TestimonialsCarousel({ items = [] }) {
+function TestimonialsCarousel({ items = [] }: TestimonialsCarouselProps) {
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
+    if (items.length === 0) return;
     const id = setInterval(() => {
       setIndex((i) => (i + 1) % items.length);
     }, 5000);
@@ -453,7 +519,7 @@ function TestimonialsCarousel({ items = [] }) {
     <div className="relative">
       <div className="p-4 rounded-lg bg-white border shadow-sm">
         <div className="flex items-start gap-4">
-          <img src={items[index].avatar} alt={items[index].name} className="w-14 h-14 rounded-full object-cover flex-none" onError={(e)=> (e.currentTarget.style.display='none')} />
+          <img src={items[index].avatar} alt={items[index].name} className="w-14 h-14 rounded-full object-cover flex-none" onError={(e) => (e.currentTarget.style.display = 'none')} />
           <div>
             <p className="text-slate-800">“{items[index].quote}”</p>
             <div className="mt-3 text-sm text-slate-500">— {items[index].name}, <span className="italic">{items[index].role}</span></div>
@@ -486,7 +552,7 @@ function NewsletterForm() {
   const [email, setEmail] = useState("");
   const [ok, setOk] = useState(false);
 
-  const submit = (e) => {
+  const submit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setOk(true);
     setEmail("");
@@ -512,7 +578,7 @@ function NewsletterForm() {
 }
 
 /* -------------------- Utilities -------------------- */
-function formatDate(iso) {
+function formatDate(iso: string) {
   try {
     const d = new Date(iso);
     return d.toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" });
@@ -521,7 +587,8 @@ function formatDate(iso) {
   }
 }
 
-function formatTZS(n) {
+function formatTZS(n: number) {
   if (!n && n !== 0) return "-";
   return `TSh ${n.toLocaleString()}`;
 }
+
