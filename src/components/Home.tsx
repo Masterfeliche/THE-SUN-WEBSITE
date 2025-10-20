@@ -248,7 +248,7 @@ export default function Home() {
                   to="/donate"
                   className="inline-flex items-center gap-2 rounded-full bg-orange-500 px-5 py-3 text-sm font-semibold text-black shadow hover:bg-orange-600 transition"
                 >
-                  Donate Now
+                  JUST DONATE
                 </Link>
 
                 <Link
@@ -591,4 +591,5 @@ function formatTZS(n: number) {
   if (!n && n !== 0) return "-";
   return `TSh ${n.toLocaleString()}`;
 }
+
 
