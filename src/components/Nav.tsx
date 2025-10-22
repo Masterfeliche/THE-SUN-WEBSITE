@@ -37,7 +37,7 @@ export default function Nav() {
             <NavLink to="/" end style={({ isActive }) => (isActive ? { ...linkStyle, ...activeStyle } : linkStyle)}>Home</NavLink>
             <NavLink to="/about" style={({ isActive }) => (isActive ? { ...linkStyle, ...activeStyle } : linkStyle)}>About</NavLink>
             <NavLink to="/programs" style={({ isActive }) => (isActive ? { ...linkStyle, ...activeStyle } : linkStyle)}>Programs</NavLink>
-            <NavLink to="/blog" style={({ isActive }) => (isActive ? { ...linkStyle, ...activeStyle } : linkStyle)}>Blog</NavLink>
+            {/* <NavLink to="/blog" style={({ isActive }) => (isActive ? { ...linkStyle, ...activeStyle } : linkStyle)}>Blog</NavLink> */}
             <NavLink to="/contact" style={({ isActive }) => (isActive ? { ...linkStyle, ...activeStyle } : linkStyle)}>Contact</NavLink>
 
             <NavLink to="/donate" style={{ marginLeft: 8, padding: "8px 12px", borderRadius: 8, background: "#ff7a1a", color: "#000", fontWeight: 700, textDecoration: "none" }}>
