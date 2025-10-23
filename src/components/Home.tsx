@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState, useRef } from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom"; // Errorem causat sine <BrowserRouter>
 
 // --- Type Definitions for our Data ---
 
@@ -219,13 +219,13 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-orange-50 via-white to-white/90 text-slate-900">
+    <div className="min-h-screen bg-black text-gray-300">
       {/* HERO */}
-      <section className="relative overflow-hidden">
+      <section className="relative overflow-hidden bg-black">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 py-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <div className="lg:col-span-7">
-              <div className="inline-flex items-center gap-3 px-3 py-1 rounded-full bg-orange-100 text-orange-700 text-sm font-semibold">
+              <div className="inline-flex items-center gap-3 px-3 py-1 rounded-full bg-gray-800 text-orange-400 text-sm font-semibold">
                 <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" aria-hidden>
                   <path d="M12 2v4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                   <path d="M12 18v4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -234,36 +234,36 @@ export default function Home() {
                 Impact · Community-led · Transparent
               </div>
 
-              <h1 className="mt-6 text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight">
-                <span className="text-orange-600">The Sun</span> — Lighting paths to sustainable communities
+              <h1 className="mt-6 text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight text-white">
+                <span className="text-orange-400">The Sun</span> — Lighting paths to sustainable communities
               </h1>
 
-              <p className="mt-4 text-slate-700 text-lg max-w-2xl">
+              <p className="mt-4 text-gray-300 text-lg max-w-2xl">
                 We partner with communities to deliver lifesaving water, clean energy, and skills programs that
                 unlock opportunity. Join us — donate, volunteer, or partner to scale impact.
               </p>
 
               <div className="mt-6 flex flex-wrap gap-3">
-                <Link
-                  to="/donate"
+                <a
+                  href="/donate"
                   className="inline-flex items-center gap-2 rounded-full bg-orange-500 px-5 py-3 text-sm font-semibold text-black shadow hover:bg-orange-600 transition"
                 >
                   JUST DONATE
-                </Link>
+                </a>
 
-                <Link
-                  to="/volunteer"
-                  className="inline-flex items-center gap-2 rounded-full border border-orange-200 px-5 py-3 text-sm font-semibold text-orange-700 bg-white hover:bg-orange-50 transition"
+                <a
+                  href="/volunteer"
+                  className="inline-flex items-center gap-2 rounded-full border border-orange-500 px-5 py-3 text-sm font-semibold text-orange-400 bg-transparent hover:bg-gray-800 transition"
                 >
                   Volunteer
-                </Link>
+                </a>
 
-                <Link
-                  to="/programs"
-                  className="inline-flex items-center gap-2 rounded-full px-4 py-3 text-sm font-medium text-slate-700 bg-white/70 hover:bg-white transition"
+                <a
+                  href="/programs"
+                  className="inline-flex items-center gap-2 rounded-full px-4 py-3 text-sm font-medium text-gray-200 bg-gray-800 hover:bg-gray-700 transition"
                 >
                   Explore Programs
-                </Link>
+                </a>
               </div>
 
               {/* Impact stats */}
@@ -277,18 +277,18 @@ export default function Home() {
 
             {/* Hero illustration / image */}
             <div className="lg:col-span-5 flex items-center justify-center">
-              <div className="w-full max-w-lg bg-gradient-to-tr from-orange-50 to-white rounded-2xl p-4 shadow-xl">
+              <div className="w-full max-w-lg bg-gray-900 border border-gray-700 rounded-2xl p-4 shadow-xl">
                 <img
                   src="/images/hero-illustration.jpg"
                   alt="Community project illustration"
-                  className="w-full h-64 object-cover rounded-lg border"
+                  className="w-full h-64 object-cover rounded-lg border border-gray-700"
                   onError={(e) => (e.currentTarget.style.display = "none")}
                 />
-                <div className="mt-3 p-3 bg-white rounded-lg border flex items-center gap-3">
+                <div className="mt-3 p-3 bg-gray-800 rounded-lg border border-gray-700 flex items-center gap-3">
                   <img src="/images/mini-avatar.jpg" alt="" className="w-10 h-10 rounded-full object-cover" onError={(e) => (e.currentTarget.style.display = 'none')} />
                   <div>
-                    <div className="text-sm font-semibold">Latest Update</div>
-                    <div className="text-xs text-slate-500">Community well opened in Region A — 500 beneficiaries</div>
+                    <div className="text-sm font-semibold text-white">Latest Update</div>
+                    <div className="text-xs text-gray-400">Community well opened in Region A — 500 beneficiaries</div>
                   </div>
                 </div>
               </div>
@@ -298,7 +298,7 @@ export default function Home() {
 
         {/* decorative wave */}
         <div className="pointer-events-none absolute inset-x-0 bottom-0">
-          <svg className="w-full h-24 text-white" viewBox="0 0 1440 150" fill="none" preserveAspectRatio="none" aria-hidden>
+          <svg className="w-full h-24 text-black" viewBox="0 0 1440 150" fill="none" preserveAspectRatio="none" aria-hidden>
             <path d="M0 0c120 0 220 60 360 60s200-60 360-60 240 38 360 38 240-12 360-12v64H0V0z" fill="currentColor" opacity="0.8"></path>
           </svg>
         </div>
@@ -306,12 +306,12 @@ export default function Home() {
 
       <main className="max-w-7xl mx-auto px-6 lg:px-8 -mt-4">
         {/* Programs section */}
-        <section className="mt-6 bg-white rounded-2xl shadow-sm p-6">
+        <section className="mt-6 bg-gray-900 border border-gray-700 rounded-2xl shadow-sm p-6">
           <div className="flex items-center justify-between mb-4">
-            <h2 className="text-xl font-semibold">Featured Programs</h2>
-            <Link to="/programs" className="text-sm font-medium text-orange-600 hover:underline">
+            <h2 className="text-xl font-semibold text-white">Featured Programs</h2>
+            <a href="/programs" className="text-sm font-medium text-orange-400 hover:underline">
               View all programs →
-            </Link>
+            </a>
           </div>
 
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -323,22 +323,22 @@ export default function Home() {
 
         {/* Events & News */}
         <section className="mt-8 grid grid-cols-1 lg:grid-cols-3 gap-6">
-          <div className="lg:col-span-2 bg-gradient-to-r from-orange-50 to-white rounded-2xl p-6 shadow-sm">
+          <div className="lg:col-span-2 bg-gray-900 border border-gray-700 rounded-2xl p-6 shadow-sm">
             <div className="flex items-center justify-between mb-3">
-              <h3 className="text-lg font-semibold">Latest News</h3>
-              <Link to="/blog" className="text-sm text-orange-600 hover:underline">See all</Link>
+              <h3 className="text-lg font-semibold text-white">Latest News</h3>
+              <a href="/blog" className="text-sm text-orange-400 hover:underline">See all</a>
             </div>
             <div className="space-y-3">
               {posts.map((post) => (
-                <article key={post.id} className="p-4 border rounded-lg bg-white">
+                <article key={post.id} className="p-4 border rounded-lg bg-gray-800 border-gray-700">
                   <div className="flex items-start gap-4">
                     <div className="flex-1">
-                      <h4 className="font-semibold">{post.title}</h4>
-                      <p className="text-sm text-slate-600 mt-1">{post.excerpt}</p>
-                      <div className="mt-2 text-xs text-slate-400">{formatDate(post.date)}</div>
+                      <h4 className="font-semibold text-white">{post.title}</h4>
+                      <p className="text-sm text-gray-300 mt-1">{post.excerpt}</p>
+                      <div className="mt-2 text-xs text-gray-500">{formatDate(post.date)}</div>
                     </div>
                     <div className="shrink-0">
-                      <Link to={`/blog/${post.id}`} className="text-orange-600 text-sm">Read →</Link>
+                      <a href={`/blog/${post.id}`} className="text-orange-400 text-sm">Read →</a>
                     </div>
                   </div>
                 </article>
@@ -346,35 +346,35 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="bg-white rounded-2xl p-6 shadow-sm">
-            <h3 className="text-lg font-semibold mb-3">Upcoming Events</h3>
+          <div className="bg-gray-900 border border-gray-700 rounded-2xl p-6 shadow-sm">
+            <h3 className="text-lg font-semibold text-white mb-3">Upcoming Events</h3>
             <ul className="space-y-3">
               {events.map((ev) => (
                 <li key={ev.id} className="flex items-start gap-3">
-                  <div className="flex-none w-12 h-12 rounded-lg bg-orange-50 flex items-center justify-center text-orange-600 font-bold">
+                  <div className="flex-none w-12 h-12 rounded-lg bg-gray-800 flex items-center justify-center text-orange-400 font-bold">
                     {new Date(ev.date).getDate()}
                   </div>
                   <div>
-                    <div className="font-medium">{ev.title}</div>
-                    <div className="text-sm text-slate-500">{formatDate(ev.date)} · {ev.venue}</div>
+                    <div className="font-medium text-white">{ev.title}</div>
+                    <div className="text-sm text-gray-400">{formatDate(ev.date)} · {ev.venue}</div>
                   </div>
                 </li>
               ))}
             </ul>
 
-            <Link to="/events" className="mt-4 inline-block text-sm font-medium text-orange-600 hover:underline">All events →</Link>
+            <a href="/events" className="mt-4 inline-block text-sm font-medium text-orange-400 hover:underline">All events →</a>
           </div>
         </section>
 
         {/* Gallery */}
-        <section className="mt-8 bg-white rounded-2xl p-6 shadow-sm">
+        <section className="mt-8 bg-gray-900 border border-gray-700 rounded-2xl p-6 shadow-sm">
           <div className="flex items-center justify-between mb-4">
-            <h3 className="text-lg font-semibold">Photo Gallery</h3>
-            <Link to="/gallery" className="text-sm text-orange-600 hover:underline">See gallery →</Link>
+            <h3 className="text-lg font-semibold text-white">Photo Gallery</h3>
+            <a href="/gallery" className="text-sm text-orange-400 hover:underline">See gallery →</a>
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
             {gallery.map((src, i) => (
-              <button key={i} onClick={() => window.open(src, "_blank", "noopener")} className="rounded overflow-hidden focus:outline-none ring-2 ring-transparent hover:ring-orange-200">
+              <button key={i} onClick={() => window.open(src, "_blank", "noopener")} className="rounded overflow-hidden focus:outline-none ring-2 ring-transparent hover:ring-orange-500">
                 <img src={src} alt={`Gallery ${i + 1}`} className="w-full h-36 object-cover" onError={(e) => (e.currentTarget.style.display = 'none')} />
               </button>
             ))}
@@ -383,38 +383,38 @@ export default function Home() {
 
         {/* Testimonials carousel + partners */}
         <section className="mt-8 grid grid-cols-1 lg:grid-cols-3 gap-6">
-          <div className="lg:col-span-2 bg-gradient-to-r from-orange-50 to-white rounded-2xl p-6 shadow-sm">
-            <h3 className="text-lg font-semibold mb-4">Voices from the field</h3>
+          <div className="lg:col-span-2 bg-gray-900 border border-gray-700 rounded-2xl p-6 shadow-sm">
+            <h3 className="text-lg font-semibold text-white mb-4">Voices from the field</h3>
             <TestimonialsCarousel items={testimonials} />
           </div>
 
-          <div className="bg-white rounded-2xl p-6 shadow-sm">
-            <h3 className="text-lg font-semibold mb-4">Our partners</h3>
+          <div className="bg-gray-900 border border-gray-700 rounded-2xl p-6 shadow-sm">
+            <h3 className="text-lg font-semibold text-white mb-4">Our partners</h3>
             <div className="flex items-center gap-4 flex-wrap">
               {partners.map((par) => (
                 <div key={par.id} className="p-2">
-                  <img src={par.logo} alt={par.name} className="h-12 object-contain" onError={(e) => (e.currentTarget.style.display = 'none')} />
+                  <img src={par.logo} alt={par.name} className="h-12 object-contain invert" onError={(e) => (e.currentTarget.style.display = 'none')} />
                 </div>
               ))}
             </div>
 
             <div className="mt-6">
-              <h4 className="text-sm font-semibold">Reports & Transparency</h4>
-              <p className="text-sm text-slate-600 mt-2">View our annual reports, audited statements and project trackers for full transparency.</p>
-              <Link to="/reports" className="mt-3 inline-block text-orange-600 hover:underline text-sm">View reports →</Link>
+              <h4 className="text-sm font-semibold text-white">Reports & Transparency</h4>
+              <p className="text-sm text-gray-300 mt-2">View our annual reports, audited statements and project trackers for full transparency.</p>
+              <a href="/reports" className="mt-3 inline-block text-orange-400 hover:underline text-sm">View reports →</a>
             </div>
           </div>
         </section>
 
         {/* Newsletter + CTA */}
-        <section className="mt-8 bg-orange-50 rounded-2xl p-6 shadow-sm flex flex-col md:flex-row items-center justify-between gap-4">
+        <section className="mt-8 bg-gray-900 border border-gray-700 rounded-2xl p-6 shadow-sm flex flex-col md:flex-row items-center justify-between gap-4">
           <div>
-            <h3 className="text-xl font-semibold">Stay in the loop</h3>
-            <p className="text-sm text-slate-700 mt-1">Get project updates, volunteer opportunities and impact stories.</p>
+            <h3 className="text-xl font-semibold text-white">Stay in the loop</h3>
+            <p className="text-sm text-gray-300 mt-1">Get project updates, volunteer opportunities and impact stories.</p>
           </div>
           <div className="flex items-center gap-3 w-full md:w-auto">
             <NewsletterForm />
-            <Link to="/donate" className="ml-2 inline-flex items-center gap-2 rounded-full bg-orange-500 px-4 py-2 text-sm font-semibold text-black hover:bg-orange-600">Donate</Link>
+            <a href="/donate" className="ml-2 inline-flex items-center gap-2 rounded-full bg-orange-500 px-4 py-2 text-sm font-semibold text-black hover:bg-orange-600">Donate</a>
           </div>
         </section>
 
@@ -423,8 +423,8 @@ export default function Home() {
           <h3 className="text-2xl font-bold">Ready to make an impact?</h3>
           <p className="mt-2 text-slate-200">Partner with us or make a one-time donation to change lives today.</p>
           <div className="mt-4 flex items-center justify-center gap-3">
-            <Link to="/donate" className="rounded-full bg-orange-500 px-6 py-3 font-semibold text-black hover:bg-orange-600">Donate</Link>
-            <Link to="/contact" className="rounded-full border border-white/20 px-6 py-3 text-white">Contact</Link>
+            <a href="/donate" className="rounded-full bg-orange-500 px-6 py-3 font-semibold text-black hover:bg-orange-600">Donate</a>
+            <a href="/contact" className="rounded-full border border-white/20 px-6 py-3 text-white">Contact</a>
           </div>
         </section>
       </main>
@@ -436,13 +436,13 @@ export default function Home() {
 
 function StatCard({ label, value, icon }: StatCardProps) {
   return (
-    <div className="bg-white rounded-lg p-4 shadow-sm flex items-center gap-3 border">
-      <div className="flex-none w-12 h-12 rounded-lg bg-orange-50 flex items-center justify-center text-orange-600">
+    <div className="bg-gray-900 border-gray-700 rounded-lg p-4 shadow-sm flex items-center gap-3 border">
+      <div className="flex-none w-12 h-12 rounded-lg bg-gray-800 flex items-center justify-center text-orange-400">
         <StatIcon name={icon} />
       </div>
       <div>
-        <div className="text-lg font-bold">{value}</div>
-        <div className="text-sm text-slate-500">{label}</div>
+        <div className="text-lg font-bold text-white">{value}</div>
+        <div className="text-sm text-gray-400">{label}</div>
       </div>
     </div>
   );
@@ -482,19 +482,19 @@ function StatIcon({ name }: StatIconProps) {
 
 function ProgramCard({ p }: ProgramCardProps) {
   return (
-    <article className="bg-white rounded-lg overflow-hidden shadow-sm border">
-      <div className="h-44 bg-slate-100 overflow-hidden">
+    <article className="bg-gray-800 rounded-lg overflow-hidden shadow-sm border border-gray-700">
+      <div className="h-44 bg-gray-700 overflow-hidden">
         <img src={p.img} alt={p.title} className="w-full h-full object-cover" onError={(e) => (e.currentTarget.style.display = 'none')} />
       </div>
       <div className="p-4">
         <div className="flex items-center justify-between">
-          <h4 className="font-semibold">{p.title}</h4>
-          <div className="text-xs text-slate-400">{p.tags?.[0]}</div>
+          <h4 className="font-semibold text-white">{p.title}</h4>
+          <div className="text-xs text-gray-500">{p.tags?.[0]}</div>
         </div>
-        <p className="text-sm text-slate-600 mt-2 line-clamp-3">{p.summary}</p>
+        <p className="text-sm text-gray-300 mt-2 line-clamp-3">{p.summary}</p>
         <div className="mt-3 flex items-center justify-between">
-          <Link to={`/programs/${p.id}`} className="text-orange-600 text-sm font-medium hover:underline">Learn more →</Link>
-          <div className="text-xs text-slate-400">{p.tags?.slice(0, 2).join(" · ")}</div>
+          <a href={`/programs/${p.id}`} className="text-orange-400 text-sm font-medium hover:underline">Learn more →</a>
+          <div className="text-xs text-gray-500">{p.tags?.slice(0, 2).join(" · ")}</div>
         </div>
       </div>
     </article>
@@ -517,22 +517,22 @@ function TestimonialsCarousel({ items = [] }: TestimonialsCarouselProps) {
 
   return (
     <div className="relative">
-      <div className="p-4 rounded-lg bg-white border shadow-sm">
+      <div className="p-4 rounded-lg bg-gray-800 border border-gray-700 shadow-sm">
         <div className="flex items-start gap-4">
           <img src={items[index].avatar} alt={items[index].name} className="w-14 h-14 rounded-full object-cover flex-none" onError={(e) => (e.currentTarget.style.display = 'none')} />
           <div>
-            <p className="text-slate-800">“{items[index].quote}”</p>
-            <div className="mt-3 text-sm text-slate-500">— {items[index].name}, <span className="italic">{items[index].role}</span></div>
+            <p className="text-gray-200">“{items[index].quote}”</p>
+            <div className="mt-3 text-sm text-gray-400">— {items[index].name}, <span className="italic">{items[index].role}</span></div>
           </div>
         </div>
       </div>
 
       {/* controls */}
       <div className="absolute right-0 top-0 flex items-center gap-2">
-        <button onClick={() => setIndex((i) => (i - 1 + items.length) % items.length)} aria-label="Previous testimonial" className="p-2 rounded-full bg-white ring-1 ring-slate-100 hover:bg-orange-50">
+        <button onClick={() => setIndex((i) => (i - 1 + items.length) % items.length)} aria-label="Previous testimonial" className="p-2 rounded-full bg-gray-700 ring-1 ring-gray-600 hover:bg-gray-600 text-white">
           ‹
         </button>
-        <button onClick={() => setIndex((i) => (i + 1) % items.length)} aria-label="Next testimonial" className="p-2 rounded-full bg-white ring-1 ring-slate-100 hover:bg-orange-50">
+        <button onClick={() => setIndex((i) => (i + 1) % items.length)} aria-label="Next testimonial" className="p-2 rounded-full bg-gray-700 ring-1 ring-gray-600 hover:bg-gray-600 text-white">
           ›
         </button>
       </div>
@@ -540,7 +540,7 @@ function TestimonialsCarousel({ items = [] }: TestimonialsCarouselProps) {
       {/* indicators */}
       <div className="mt-3 flex items-center gap-2">
         {items.map((_, i) => (
-          <button key={i} onClick={() => setIndex(i)} className={`w-2 h-2 rounded-full ${i === index ? "bg-orange-500" : "bg-slate-300"}`} aria-label={`Go to testimonial ${i + 1}`}></button>
+          <button key={i} onClick={() => setIndex(i)} className={`w-2 h-2 rounded-full ${i === index ? "bg-orange-400" : "bg-gray-600"}`} aria-label={`Go to testimonial ${i + 1}`}></button>
         ))}
       </div>
     </div>
@@ -569,7 +569,7 @@ function NewsletterForm() {
         placeholder="you@example.com"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
-        className="flex-1 rounded-full border border-slate-200 px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-orange-200"
+        className="flex-1 rounded-full border border-gray-700 bg-gray-800 px-4 py-2 text-sm text-white focus:outline-none focus:ring-2 focus:ring-orange-500"
       />
       <button type="submit" className="rounded-full bg-orange-500 px-4 py-2 text-sm font-semibold text-black hover:bg-orange-600">Subscribe</button>
       {ok && <div className="text-sm text-green-600 ml-3">Thanks!</div>}

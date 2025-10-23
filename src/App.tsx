@@ -6,7 +6,8 @@ import Home from "./components/Home";
 import About from "./components/About";
 import Programs from "./components/Programs";
 import Contact from "./components/Contact";
-import Donate from "./components/Donate"
+import Donate from "./components/Donate";
+import Footer from "./components/Footer";
 
 
 /* Placeholder pages: create simple components for these or replace with real pages */
@@ -22,6 +23,8 @@ const Privacy = () => <div className="max-w-5xl mx-auto p-6">Privacy (replace)</
 
 export default function App() {
   return (
+
+    <>
     <div>
       <Nav />
       <Routes>
@@ -37,6 +40,12 @@ export default function App() {
         <Route path="/privacy" element={<Privacy />} />
         {/* Add other routes as needed */}
       </Routes>
+      <Footer />
+    
     </div>
+
+      
+
+      </>
   );
 }
