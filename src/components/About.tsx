@@ -106,7 +106,7 @@ const About = () => {
             {/* Service 1 */}
             <div className="bg-gray-900 shadow-lg rounded-lg overflow-hidden">
               <img
-                src="/floriane-vita-FyD3OWBuXnY-unsplash.jpg"
+                src="/milos-lopusina-wn4ZVTeS9Cg-unsplash.jpg"
                 alt="Service 1"
                 className="w-full h-48 object-cover"
               />
@@ -122,7 +122,7 @@ const About = () => {
             {/* Service 2 */}
             <div className="bg-gray-900 shadow-lg rounded-lg overflow-hidden">
               <img
-                src="/floriane-vita-FyD3OWBuXnY-unsplash.jpg"
+                src="/shahriar-sumodro-hv8zsjKDZTI-unsplash.jpg"
                 alt="Service 2"
                 className="w-full h-48 object-cover"
               />
@@ -138,7 +138,7 @@ const About = () => {
             {/* Service 3 */}
             <div className="bg-gray-900 shadow-lg rounded-lg overflow-hidden">
               <img
-                src="/floriane-vita-FyD3OWBuXnY-unsplash.jpg"
+                src="/hannah-busing-Zyx1bK9mqmA-unsplash.jpg"
                 alt="Service 3"
                 className="w-full h-48 object-cover"
               />
@@ -175,7 +175,7 @@ const About = () => {
             {/* Team Member 1 */}
             <div className="text-center">
               <img
-                src="/floriane-vita-FyD3OWBuXnY-unsplash.jpg"
+                src="/adetola-afolabi-x0A7wgQmmdk-unsplash.jpg"
                 alt="Felix Sisk"
                 className="w-40 h-40 rounded-full mx-auto mb-4 object-cover shadow-md"
               />
@@ -198,7 +198,7 @@ const About = () => {
             {/* Team Member 2 */}
             <div className="text-center">
               <img
-                src="/floriane-vita-FyD3OWBuXnY-unsplash.jpg"
+                src="/christina-wocintechchat-com-SJvDxw0azqw-unsplash.jpg"
                 alt="Team Member"
                 className="w-40 h-40 rounded-full mx-auto mb-4 object-cover shadow-md"
               />
@@ -221,7 +221,7 @@ const About = () => {
             {/* Team Member 3 */}
             <div className="text-center">
               <img
-                src="/floriane-vita-FyD3OWBuXnY-unsplash.jpg"
+                src="/zahir-namane-hwc7eIQiTCE-unsplash.jpg"
                 alt="Team Member"
                 className="w-40 h-40 rounded-full mx-auto mb-4 object-cover shadow-md"
               />
